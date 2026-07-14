@@ -22,7 +22,7 @@
       .amber { fill: #fffbeb; stroke: #f59e0b; }
       .gray { fill: #f8fafc; stroke: #cbd5e1; }
       .outer { fill: none; stroke: #94a3b8; stroke-width: 2.5; stroke-dasharray: 10 8; }
-      .line { fill: none; stroke: #334155; stroke-width: 3; marker-end: url(#arrow); }
+      .line { fill: none; stroke: #334155; stroke-width: 2.3; marker-end: url(#arrow); }
       .line2 { fill: none; stroke: #64748b; stroke-width: 3; marker-end: url(#arrowSoft); }
       .note { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 1.5; rx: 14; }
       .pill { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.4; rx: 999; }
@@ -70,65 +70,54 @@
   <text x="475" y="587" class="small">Issue lease, renew, revoke</text>
   <text x="475" y="612" class="tiny">Credential broker, not a PostgreSQL proxy</text>
 
-  <rect x="995" y="255" width="250" height="155" class="box amber"/>
-  <text x="1025" y="295" class="label">Dedicated Aurora</text>
-  <text x="1025" y="325" class="small">OpenBao storage backend</text>
-  <text x="1025" y="352" class="tiny">State, leases, policy data</text>
+  <rect x="700" y="255" width="230" height="150" class="box amber"/>
+  <text x="725" y="295" class="label">Dedicated Aurora</text>
+  <text x="725" y="325" class="small">OpenBao storage backend</text>
+  <text x="725" y="352" class="tiny">State, leases, policy data</text>
 
-  <rect x="995" y="435" width="250" height="110" class="box gray"/>
-  <text x="1025" y="475" class="label">Audit storage</text>
-  <text x="1025" y="502" class="small">Retention for operations</text>
-  <text x="1025" y="528" class="tiny">Separate from credential backend</text>
+  <rect x="700" y="430" width="230" height="100" class="box gray"/>
+  <text x="725" y="468" class="label">Audit storage</text>
+  <text x="725" y="495" class="small">Retention for operations</text>
 
-  <text x="1270" y="168" class="section">GENERIC NONPROD ESTATE</text>
-  <rect x="1270" y="190" width="250" height="280" class="box blue"/>
-  <text x="1300" y="232" class="label">Aurora PostgreSQL</text>
-  <text x="1300" y="262" class="small">Pilot target</text>
-  <text x="1300" y="290" class="tiny">OpenBao-issued credentials only</text>
-  <rect x="1300" y="320" width="190" height="46" class="pill" rx="23"/>
-  <text x="1326" y="349" class="small">Stable NOLOGIN roles</text>
-  <rect x="1300" y="375" width="190" height="46" class="pill" rx="23"/>
-  <text x="1326" y="404" class="small">Ephemeral LOGIN role</text>
-  <rect x="1300" y="430" width="190" height="30" class="pill" rx="15"/>
-  <text x="1320" y="451" class="tiny">Connect over approved private path</text>
+  <text x="940" y="168" class="section">GENERIC NONPROD ESTATE</text>
+  <rect x="940" y="520" width="250" height="210" class="box blue"/>
+  <text x="970" y="562" class="label">Aurora PostgreSQL</text>
+  <text x="970" y="592" class="small">Pilot target</text>
+  <text x="970" y="620" class="tiny">OpenBao-issued credentials only</text>
+  <rect x="970" y="650" width="190" height="34" class="pill" rx="17"/>
+  <text x="996" y="673" class="small">Stable NOLOGIN roles</text>
+  <rect x="970" y="690" width="190" height="34" class="pill" rx="17"/>
+  <text x="996" y="713" class="small">Ephemeral LOGIN role</text>
+  <text x="970" y="744" class="tiny">Approved private path</text>
 
-  <text x="1270" y="515" class="section">RESPONSIBILITY</text>
-  <rect x="1270" y="540" width="250" height="120" class="box gray"/>
-  <text x="1298" y="578" class="small">Terraform</text>
-  <text x="1298" y="606" class="tiny">Stable roles, grants, schemas</text>
-  <text x="1298" y="632" class="tiny">OpenBao handles credentials</text>
+  <text x="940" y="505" class="section">RESPONSIBILITY</text>
+  <rect x="940" y="750" width="250" height="90" class="box gray"/>
+  <text x="968" y="786" class="small">Terraform</text>
+  <text x="968" y="812" class="tiny">Stable roles, grants, schemas</text>
+  <text x="968" y="832" class="tiny">OpenBao handles credentials</text>
 
-  <circle cx="360" cy="262" r="18" fill="#e0f2fe" stroke="#60a5fa" stroke-width="2"/>
+  <circle cx="360" cy="262" r="16" fill="#e0f2fe" stroke="#60a5fa" stroke-width="2"/>
   <text x="354" y="268" class="num">1</text>
   <path d="M340 262 C380 262, 390 262, 445 262" class="line"/>
   <text x="360" y="245" class="tiny">OIDC login</text>
 
-  <circle cx="360" cy="438" r="18" fill="#ede9fe" stroke="#a78bfa" stroke-width="2"/>
+  <circle cx="360" cy="438" r="16" fill="#ede9fe" stroke="#a78bfa" stroke-width="2"/>
   <text x="354" y="444" class="num">2</text>
   <path d="M340 438 C390 438, 405 405, 445 390" class="line2"/>
   <text x="350" y="420" class="tiny">claims + group policy</text>
 
-  <circle cx="910" cy="330" r="18" fill="#dcfce7" stroke="#4ade80" stroke-width="2"/>
+  <circle cx="910" cy="330" r="16" fill="#dcfce7" stroke="#4ade80" stroke-width="2"/>
   <text x="904" y="336" class="num">3</text>
-  <path d="M900 330 C930 330, 945 330, 995 330" class="line"/>
-  <text x="860" y="312" class="tiny">backend state</text>
+  <path d="M900 330 H700" class="line"/>
+  <text x="848" y="312" class="tiny">backend state</text>
 
-  <circle cx="910" cy="482" r="18" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
-  <text x="904" y="488" class="num">4</text>
-  <path d="M900 482 C930 482, 945 482, 995 482" class="line"/>
-  <text x="846" y="463" class="tiny">audit and retention</text>
+  <circle cx="910" cy="575" r="16" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="904" y="581" class="num">4</text>
+  <path d="M900 575 H940" class="line"/>
+  <text x="932" y="555" class="tiny">issue short-lived creds</text>
 
-  <circle cx="910" cy="575" r="18" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
-  <text x="904" y="581" class="num">5</text>
-  <path d="M900 575 C1030 575, 1110 515, 1270 350" class="line2"/>
-  <text x="920" y="554" class="tiny">issue short-lived creds</text>
-
-  <circle cx="360" cy="710" r="18" fill="#e0f2fe" stroke="#60a5fa" stroke-width="2"/>
-  <text x="354" y="716" class="num">6</text>
-  <path d="M340 710 C540 710, 980 710, 1300 452" class="line"/>
-  <text x="640" y="690" class="tiny">connect with issued credential</text>
-
-  <rect x="80" y="740" width="1440" height="78" class="note"/>
-  <text x="110" y="770" class="small">Flow: engineer authenticates with Entra, OpenBao issues a lease-backed PostgreSQL credential, and the client connects directly to Aurora over the approved private path.</text>
-  <text x="110" y="795" class="tiny">This keeps human access short-lived and auditable while Terraform keeps stable database structure out of the runtime path.</text>
+  <circle cx="360" cy="690" r="16" fill="#e0f2fe" stroke="#60a5fa" stroke-width="2"/>
+  <text x="354" y="696" class="num">5</text>
+  <path d="M340 690 H620 V650 H940" class="line"/>
+  <text x="620" y="672" class="tiny">connect with issued credential</text>
 </svg>
