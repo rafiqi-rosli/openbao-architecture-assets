@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">OpenBao non-production database access architecture</title>
+  <desc id="desc">Entra OIDC authenticates humans into an OpenBao HA cluster on central-shared-nonprod EKS. OpenBao uses a dedicated Aurora PostgreSQL backend and issues short-lived credentials to non-production Aurora PostgreSQL targets.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#344054"/>
+    </marker>
+    <style>
+      .t{font:700 30px Arial,sans-serif;fill:#0f172a}.s{font:500 15px Arial,sans-serif;fill:#475467}.l{font:700 18px Arial,sans-serif;fill:#101828}.m{font:500 14px Arial,sans-serif;fill:#344054}.box{fill:#fff;stroke:#98a2b3;stroke-width:2;rx:18}.blue{fill:#eff6ff;stroke:#60a5fa}.green{fill:#ecfdf3;stroke:#4ade80}.purple{fill:#f5f3ff;stroke:#a78bfa}.amber{fill:#fffbeb;stroke:#f59e0b}.gray{fill:#f8fafc;stroke:#cbd5e1}.dash{fill:none;stroke:#94a3b8;stroke-width:2.5;stroke-dasharray:10 8}.line{fill:none;stroke:#344054;stroke-width:3;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="1600" height="900" fill="#f8fafc"/>
+  <text x="70" y="70" class="t">OpenBao Database Access Architecture</text>
+  <text x="70" y="100" class="s">Non-production only, with a future production mirror kept separate.</text>
+  <rect x="45" y="140" width="1510" height="715" class="dash" rx="26"/>
+  <text x="75" y="178" class="l">central-shared-nonprod</text>
+
+  <rect x="85" y="235" width="260" height="130" class="box blue"/>
+  <text x="115" y="275" class="l">Humans</text>
+  <text x="115" y="305" class="m">DBeaver Community</text>
+  <text x="115" y="332" class="m">psql</text>
+  <text x="115" y="358" class="m">Entra OIDC login</text>
+
+  <rect x="85" y="430" width="260" height="125" class="box purple"/>
+  <text x="115" y="470" class="l">Microsoft Entra ID</text>
+  <text x="115" y="500" class="m">OIDC + group claims</text>
+  <text x="115" y="528" class="m">Identity source</text>
+
+  <rect x="430" y="205" width="475" height="360" class="box gray"/>
+  <text x="458" y="245" class="l">OpenBao HA cluster</text>
+  <text x="458" y="272" class="m">Helm / GitOps</text>
+  <rect x="460" y="300" width="190" height="95" class="box green"/>
+  <text x="490" y="338" class="l">3 replicas</text>
+  <text x="490" y="366" class="m">No single pod</text>
+  <rect x="670" y="300" width="205" height="95" class="box amber"/>
+  <text x="700" y="338" class="l">KMS auto-unseal</text>
+  <text x="700" y="366" class="m">No manual unseal</text>
+  <rect x="460" y="415" width="205" height="95" class="box blue"/>
+  <text x="490" y="452" class="l">TLS ingress</text>
+  <text x="490" y="480" class="m">Internal only</text>
+  <rect x="685" y="415" width="190" height="95" class="box purple"/>
+  <text x="715" y="452" class="l">Audit logs</text>
+  <text x="715" y="480" class="m">Monitoring</text>
+
+  <rect x="980" y="240" width="260" height="140" class="box amber"/>
+  <text x="1010" y="280" class="l">Dedicated Aurora</text>
+  <text x="1010" y="308" class="m">OpenBao storage backend</text>
+  <text x="1010" y="336" class="m">Separate backend cluster</text>
+
+  <rect x="980" y="415" width="260" height="110" class="box green"/>
+  <text x="1010" y="455" class="l">Policy engine</text>
+  <text x="1010" y="482" class="m">Lease, revoke, audit</text>
+
+  <rect x="1280" y="235" width="235" height="295" class="box blue"/>
+  <text x="1308" y="275" class="l">Nonprod Aurora</text>
+  <text x="1308" y="304" class="m">Pilot database target</text>
+  <rect x="1310" y="330" width="175" height="52" rx="26" class="box"/>
+  <text x="1335" y="363" class="m">Stable NOLOGIN roles</text>
+  <rect x="1310" y="395" width="175" height="52" rx="26" class="box"/>
+  <text x="1330" y="428" class="m">Ephemeral LOGIN roles</text>
+  <rect x="1310" y="460" width="175" height="52" rx="26" class="box"/>
+  <text x="1328" y="493" class="m">Short-lived credentials</text>
+
+  <path d="M345 300 C395 300, 400 300, 430 300" class="line"/>
+  <path d="M220 430 C220 395, 220 390, 220 365" class="line"/>
+  <path d="M905 345 C945 345, 955 345, 980 345" class="line"/>
+  <path d="M905 462 C945 462, 955 462, 980 462" class="line"/>
+  <path d="M1240 345 C1260 345, 1270 345, 1280 345" class="line"/>
+
+  <rect x="85" y="610" width="1170" height="155" class="box"/>
+  <text x="115" y="650" class="l">What this shows</text>
+  <text x="115" y="682" class="m">1. A human signs in with Entra OIDC.</text>
+  <text x="115" y="710" class="m">2. OpenBao evaluates policy and uses its dedicated Aurora backend.</text>
+  <text x="115" y="738" class="m">3. OpenBao issues short-lived credentials to the pilot nonprod Aurora cluster.</text>
+  <text x="115" y="766" class="m">4. Audit, monitoring, and revocation stay inside the OpenBao control plane.</text>
+
+  <rect x="1280" y="610" width="235" height="155" class="box gray" stroke-dasharray="8 6"/>
+  <text x="1306" y="650" class="l">Future prod mirror</text>
+  <text x="1306" y="682" class="m">Separate cluster</text>
+  <text x="1306" y="710" class="m">Separate storage</text>
+  <text x="1306" y="738" class="m">Separate policies</text>
+  <text x="1306" y="766" class="m">Not in this delivery</text>
+</svg>
